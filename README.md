@@ -1,0 +1,1 @@
+This package calculates Daicritization Error Rate (DER) and Word Error Rate (WER)
