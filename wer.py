@@ -1,36 +1,91 @@
-from util import *
+"""
+Calculating WER
+"""
+
+from constants import ALL_POSSIBLE_HARAQAT
+from util import calculate_rate, get_word_without_case_ending, has_arabic_letters
 
 
-def calculate_wer(original_content, prediction_content, case_ending=True):
+def calculate_wer(
+    original_content, predicted_content, case_ending=True, include_non_arabic=False
+):
+    """
+    Calculate Word Error Rate (WER) from two text content
+    Args
+        original_content (str): the original text that contains the correct
+        diacritization.
+        predicted_content (str): the predicted text
+        case_ending (str): whether to include the last character of each word darning
+        the calculation
+        include_non_arabic (bool): any space separated word other than Arabic,
+        such as punctuations
+    Returns:
+        WER : The  word error rate (WER)
+
+    """
+
     original = original_content.split()
-    prediction = prediction_content.split()
-    # print('before {} {}'.format(len(original), len(prediction)))
-    prediction = [p for p in prediction if p not in all_possible_haraqat.keys()]
-    original = [o for o in original if o not in all_possible_haraqat.keys()]
-    # print('after {} {}'.format(len(original), len(prediction)))
-    for p in prediction:
-        if p in all_possible_haraqat.keys():
-            raise AssertionError()
+    prediction = predicted_content.split()
+
+    # if the word is a diacritic skip it, as it my wrongly diacritic not diacritized
+    # char and may case all the words to be shifted
+    prediction = [
+        word for word in prediction if word not in ALL_POSSIBLE_HARAQAT.keys()
+    ]
+    original = [word for word in original if word not in ALL_POSSIBLE_HARAQAT.keys()]
+
+    assert len(prediction) == len(original)
+
     equal = 0
     not_equal = 0
-    for i, (w1, w2) in enumerate(zip(original, prediction)):
-        if not case_ending:
-            _, w1, h1 = extract_haraqat(w1)
-            _, w2, h2 = extract_haraqat(w2)
-            w1 = combine_txt_and_haraqat(w1[:-1], h1[:-1])
-            w2 = combine_txt_and_haraqat(w2[:-1], h2[:-1])
 
-        if w1 == w2:
+    for _, (original_word, predicted_word) in enumerate(zip(original, prediction)):
+        if not include_non_arabic:
+
+            if not has_arabic_letters(original_word) and not has_arabic_letters(
+                predicted_word
+            ):
+                continue
+
+        if not case_ending:
+            # When not using case_ending, exclude the last char of each word from
+            # calculation
+            original_word = get_word_without_case_ending(original_word)
+            predicted_word = get_word_without_case_ending(predicted_word)
+
+        if original_word == predicted_word:
             equal += 1
         else:
             not_equal += 1
+
     return calculate_rate(equal, not_equal)
 
 
-def calculate_wer_from_path(inp_path, out_path, case_ending=True):
-    with open(inp_path, encoding='utf8') as file:
-        inp_content = file.read()
-    with open(out_path, encoding='utf8') as file:
-        out_content = file.read()
+def calculate_wer_from_path(
+    original_path: str,
+    predicted_path: str,
+    case_ending: bool = True,
+    include_non_arabic: bool = False,
+) -> float:
+    """
+    Given the input path and the out_path, this function read the content
+    of both files and call calculate_der function.
+    Args:
+        inp_path: the path to the original file
+        out_path: the path to the generated file
+        case_ending: whether to calculate the last character of each word or not
+    Return:
+     DER: the diacritic error rate between the two files
+    """
+    with open(original_path, encoding="utf8") as file:
+        original_content = file.read()
 
-    return calculate_wer(inp_content, out_content, case_ending)
+    with open(predicted_path, encoding="utf8") as file:
+        predicted_content = file.read()
+
+    return calculate_wer(
+        original_content,
+        predicted_content,
+        case_ending=case_ending,
+        include_non_arabic=include_non_arabic,
+    )

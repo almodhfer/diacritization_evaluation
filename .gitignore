@@ -1,1 +1,6 @@
 __pycache__
+pyright
+pyrightconfig.json
+.coverage
+out*
+main*
