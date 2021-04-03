@@ -1,5 +1,7 @@
 
-from distutils.core import setup
+#from distutils.core import setup
+from setuptools import setup
+
 setup(
     # How you named your package folder (MyLib)
     name='diacritization_evaluation',
