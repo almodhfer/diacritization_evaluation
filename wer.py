@@ -27,8 +27,8 @@ def calculate_wer(
     original = original_content.split()
     prediction = predicted_content.split()
 
-    # if the word is a diacritic skip it, as it my wrongly diacritic not diacritized
-    # char and may case all the words to be shifted
+    # If the whole word is a diacritic, then skip it since it my cause error in the WER caclulation
+    #by shifting all remaining words.
     prediction = [
         word for word in prediction if word not in ALL_POSSIBLE_HARAQAT.keys()
     ]
@@ -71,8 +71,8 @@ def calculate_wer_from_path(
     Given the input path and the out_path, this function read the content
     of both files and call calculate_der function.
     Args:
-        inp_path: the path to the original file
-        out_path: the path to the generated file
+        original_path: the path to the original file
+        predicted_path: the path to the predicted file
         case_ending: whether to calculate the last character of each word or not
     Return:
      DER: the diacritic error rate between the two files
