@@ -4,8 +4,8 @@ from setuptools import setup
 
 setup(
     # How you named your package folder (MyLib)
-    name='diacritization_evaluation',
-    packages=['diacritization_evaluation'],   # Chose the same as "name"
+    name='diacritization-evaluation',
+    packages=['diacritization-evaluation'],   # Chose the same as "name"
     version='0.4',      # Start with a small number and increase it with every change you make
     # Chose a license from here: https://help.github.com/articles/licensing-a-repository
     license='MIT',
@@ -14,9 +14,9 @@ setup(
     author='Mokhtar Madhfar',                   # Type in your name
     author_email='mokhtarmodhfer@gmail.com',      # Type in your E-Mail
     # Provide either the link to your github or to your website
-    url='https://github.com/almodhfer/diacritization_evaluation',
+    url='https://github.com/almodhfer/diacritization-evaluation',
     # I explain this later on
-    download_url='https://github.com/almodhfer/diacritization_evaluation/archive',
+    download_url='https://github.com/almodhfer/diacritization-evaluation/archive',
     # Keywords that define your package best
     keywords=['diacritization', 'WER', 'DER'],
     install_requires=[            # I get to this in a second
