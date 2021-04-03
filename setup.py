@@ -14,9 +14,9 @@ setup(
     author='Mokhtar Madhfar',                   # Type in your name
     author_email='mokhtarmodhfer@gmail.com',      # Type in your E-Mail
     # Provide either the link to your github or to your website
-    url='https://github.com/almodhfer/diacritization_evaluation',
+    url='https://github.com/almodhfer/diacritization-evaluation',
     # I explain this later on
-    download_url='https://github.com/almodhfer/diacritization_evaluation/archive/v_01.tar.gz',
+    download_url='https://github.com/almodhfer/diacritization-evaluation/archive',
     # Keywords that define your package best
     keywords=['diacritization', 'WER', 'DER'],
     install_requires=[            # I get to this in a second
