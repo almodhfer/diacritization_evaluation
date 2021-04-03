@@ -6,7 +6,7 @@ setup(
     # How you named your package folder (MyLib)
     name='diacritization_evaluation',
     packages=['diacritization_evaluation'],   # Chose the same as "name"
-    version='0.4',      # Start with a small number and increase it with every change you make
+    version='0.5',      # Start with a small number and increase it with every change you make
     # Chose a license from here: https://help.github.com/articles/licensing-a-repository
     license='MIT',
     # Give a short description about your library
