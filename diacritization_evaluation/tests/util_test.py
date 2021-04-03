@@ -4,7 +4,7 @@ Util Test Module
 import unittest
 import os
 
-from util import (
+from diacritization_evaluation.util import (
     extract_haraqat,
     get_case_ending_indices_from_un_diacritized_txt,
     combine_txt_and_haraqat,

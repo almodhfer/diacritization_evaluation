@@ -3,7 +3,7 @@ from typing import  List
 import unittest
 import os
 
-from util import (
+from diacritization_evaluation.util import (
     calculate_rate,
     combine_txt_and_haraqat,
     count_diacritics,
@@ -12,7 +12,7 @@ from util import (
     get_different_haraqah,
     get_word_without_case_ending,
 )
-from wer import calculate_wer
+from diacritization_evaluation.wer import calculate_wer
 
 
 class WERTest(unittest.TestCase):

@@ -6,7 +6,7 @@ import random
 
 from diacritization_evaluation.der import calculate_der
 
-from util import (
+from diacritization_evaluation.util import (
     calculate_rate,
     extract_haraqat,
     get_case_ending_indices_from_un_diacritized_txt,

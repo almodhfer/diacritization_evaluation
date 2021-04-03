@@ -2,9 +2,8 @@
 Util functions that are helpful for calculating DER and WER
 """
 import random
-from constants import (
+from .constants import (
     ALL_POSSIBLE_HARAQAT,
-    PUNCTUATIONS,
     BASIC_HARAQAT,
     ARAB_CHARS_NO_SPACE,
     VALID_ARABIC,

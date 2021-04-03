@@ -2,8 +2,8 @@
 Calculating WER
 """
 
-from constants import ALL_POSSIBLE_HARAQAT
-from util import calculate_rate, get_word_without_case_ending, has_arabic_letters
+from .constants import ALL_POSSIBLE_HARAQAT
+from .util import calculate_rate, get_word_without_case_ending, has_arabic_letters
 
 
 def calculate_wer(

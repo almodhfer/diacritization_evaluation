@@ -2,7 +2,7 @@
 Calculating the DER
 """
 
-from util import (
+from .util import (
     extract_haraqat,
     get_case_ending_indices_from_un_diacritized_txt,
     calculate_rate,
