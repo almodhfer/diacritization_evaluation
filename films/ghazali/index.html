@@ -1,0 +1,1074 @@
+<title>رحلة الغزالي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;1,400;1,500&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<style>
+  :root {
+    color-scheme: dark;
+    --night: #0a0d18;
+    --night-2: #111728;
+    --lapis: #1b2745;
+    --line: #2a3350;
+    --gold: #d9a441;
+    --gold-soft: #e9c77b;
+    --parchment: #efe3c8;
+    --muted: #a8a28f;
+    --ember: #c0643f;
+    --f-display: "Aref Ruqaa", "Amiri", "Traditional Arabic", serif;
+    --f-body: "Amiri", "Traditional Arabic", "Times New Roman", serif;
+    --f-ui: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+    --f-latin: "Cormorant Garamond", "Georgia", serif;
+  }
+  [hidden] { display: none !important; }
+  html, body { background: var(--night); color: var(--parchment); }
+  body { font-family: var(--f-ui); line-height: 1.6; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 56px; display: grid; gap: 28px; }
+  header { display: grid; gap: 6px; }
+  .eyebrow { margin: 0; font-size: 13px; letter-spacing: .04em; color: var(--gold); }
+  .eyebrow span { font-family: var(--f-latin); font-style: italic; font-size: 15px; letter-spacing: .02em; color: var(--muted); }
+  h1 { margin: 0; font-family: var(--f-display); font-weight: 700; font-size: clamp(40px, 7vw, 72px); line-height: 1.15; color: var(--gold-soft); text-wrap: balance; }
+  .lede { margin: 0; max-width: 62ch; font-family: var(--f-body); font-size: 19px; color: var(--parchment); opacity: .88; }
+
+  .screen { background: #000; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+  .stage { position: relative; aspect-ratio: 16 / 9; max-width: 100%; background: #000; }
+  .stage canvas { display: block; width: 100%; height: 100%; cursor: pointer; }
+  .big-play { position: absolute; inset: 0; margin: auto; width: 88px; height: 88px; border-radius: 50%; border: 1px solid rgba(233,199,123,.6); background: rgba(10,13,24,.55); color: var(--gold-soft); display: grid; place-items: center; cursor: pointer; backdrop-filter: blur(3px); transition: transform .2s, background .2s; }
+  .big-play:hover { transform: scale(1.06); background: rgba(10,13,24,.75); }
+  .big-play svg { width: 34px; height: 34px; transform: translateX(3px); }
+
+  .subs { min-height: 104px; padding: 12px 20px 14px; display: grid; align-content: center; justify-items: center; gap: 2px; text-align: center; background: #000; border-top: 1px solid #111; }
+  .subs p { margin: 0; transition: opacity .35s; }
+  .subs .ar { font-family: var(--f-body); font-size: clamp(18px, 2.4vw, 25px); line-height: 1.55; color: var(--parchment); }
+  .subs .en { font-family: var(--f-latin); font-style: italic; font-size: clamp(15px, 1.8vw, 19px); color: var(--muted); }
+  .subs.hide-ar .ar, .subs.hide-en .en { display: none; }
+
+  .controls { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: var(--night-2); border-top: 1px solid var(--line); flex-wrap: wrap; }
+  .ctl { flex: none; height: 36px; min-width: 36px; padding: 0 10px; border-radius: 4px; border: 1px solid var(--line); background: transparent; color: var(--parchment); font: 500 13px var(--f-ui); display: inline-flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; }
+  .ctl:hover { border-color: var(--gold); color: var(--gold-soft); }
+  .ctl svg { width: 16px; height: 16px; }
+  .ctl[aria-pressed="true"] { border-color: var(--gold); color: var(--gold-soft); }
+  button:focus-visible, input:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .time { flex: none; font: 500 13px var(--f-ui); font-variant-numeric: tabular-nums; color: var(--muted); direction: ltr; min-width: 92px; text-align: center; }
+  .track { position: relative; flex: 1 1 200px; min-width: 0; height: 36px; display: flex; align-items: center; }
+  .track input { width: 100%; margin: 0; accent-color: var(--gold); cursor: pointer; }
+  .ticks { position: absolute; inset-inline: 8px; bottom: 2px; height: 6px; pointer-events: none; }
+  .ticks i { position: absolute; width: 1px; height: 6px; background: var(--muted); opacity: .5; }
+
+  .chapters h2, .notes h2 { margin: 0 0 12px; font-family: var(--f-display); font-weight: 400; font-size: 30px; color: var(--gold-soft); }
+  .chapters ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
+  .chap { width: 100%; height: 100%; text-align: start; display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto; column-gap: 12px; align-items: baseline; padding: 10px 12px; border-radius: 4px; border: 1px solid var(--line); background: var(--night-2); color: var(--parchment); cursor: pointer; font-family: var(--f-ui); }
+  .chap:hover { border-color: var(--gold); }
+  .chap[aria-current="true"] { border-color: var(--gold); background: var(--lapis); }
+  .chap .n { grid-row: span 2; font-family: var(--f-body); font-size: 26px; color: var(--gold); line-height: 1; }
+  .chap .t { font-family: var(--f-body); font-size: 19px; font-weight: 700; }
+  .chap .e { font-family: var(--f-latin); font-style: italic; font-size: 15px; color: var(--muted); display: flex; justify-content: space-between; gap: 8px; }
+  .chap .e b { font: 500 12px var(--f-ui); font-variant-numeric: tabular-nums; color: var(--muted); direction: ltr; }
+
+  .notes { display: grid; gap: 10px; max-width: 70ch; }
+  .notes p { margin: 0; font-family: var(--f-body); font-size: 18px; color: var(--parchment); opacity: .88; }
+  .notes .en { font-family: var(--f-latin); font-size: 17px; color: var(--muted); }
+
+  .screen:fullscreen { display: flex; flex-direction: column; justify-content: center; border: 0; border-radius: 0; }
+  .screen:fullscreen .stage { width: min(100vw, calc((100vh - 170px) * 16 / 9)); margin: 0 auto; }
+
+  @media (max-width: 560px) {
+    .subs { min-height: 120px; padding-inline: 12px; }
+    .time { min-width: 0; }
+    .chapters ol { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+
+<main class="wrap" dir="rtl" lang="ar">
+  <header>
+    <p class="eyebrow">فيلم تحريكي قصير · <span>an animated short film</span></p>
+    <h1>رحلة الغزالي</h1>
+    <p class="lede">من دكّان غزّالٍ في طوس إلى منبر النظامية في بغداد، ثم إلى عزلة المنارة في دمشق: حياة أبي حامد الغزالي، حجة الإسلام، في أحد عشر فصلًا.</p>
+  </header>
+
+  <section class="screen" id="screen" aria-label="الفيلم">
+    <div class="stage">
+      <canvas id="cv" aria-label="مشاهد متحركة من حياة الغزالي"></canvas>
+      <button class="big-play" id="bigPlay" aria-label="تشغيل الفيلم">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg>
+      </button>
+    </div>
+    <div class="subs" id="subs" aria-live="polite">
+      <p class="ar" id="subAr">اضغط تشغيل لتبدأ الحكاية</p>
+      <p class="en" id="subEn" dir="ltr" lang="en">Press play to begin</p>
+    </div>
+    <div class="controls">
+      <button class="ctl" id="playBtn" aria-label="تشغيل"></button>
+      <span class="time" id="time">0:00 / 0:00</span>
+      <div class="track">
+        <input type="range" id="seek" min="0" max="100" step="0.1" value="0" aria-label="موضع التشغيل">
+        <div class="ticks" id="ticks"></div>
+      </div>
+      <button class="ctl" id="langBtn" aria-label="لغة الترجمة">عربي + EN</button>
+      <button class="ctl" id="soundBtn" aria-pressed="false" aria-label="الموسيقى"></button>
+      <button class="ctl" id="fsBtn" aria-label="ملء الشاشة">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <section class="chapters">
+    <h2>الفصول</h2>
+    <ol id="chapters"></ol>
+  </section>
+
+  <section class="notes">
+    <h2>عن الفيلم</h2>
+    <p>تظهر الشخصيات ظلالًا بلا ملامح، تأدّبًا مع العلماء وجريًا على عُرف الفن الإسلامي. والأحداث مأخوذة من «المنقذ من الضلال» للغزالي نفسه، و«طبقات الشافعية الكبرى» للسبكي، ورواية أخيه أحمد عن وفاته كما نقلها ابن الجوزي في «الثبات عند الممات».</p>
+    <p class="en" dir="ltr" lang="en">People appear as faceless silhouettes, out of respect and in keeping with Islamic artistic custom. Events follow al-Ghazali's own autobiography, al-Munqidh min al-Dalal; al-Subki's Tabaqat al-Shafi'iyya al-Kubra; and his brother Ahmad's account of his death, preserved by Ibn al-Jawzi. The music is generated live in the Hijaz mode.</p>
+  </section>
+</main>
+
+<script>
+(() => {
+'use strict';
+const W = 1280, H = 720, TAU = Math.PI * 2;
+const cv = document.getElementById('cv');
+const ctx = cv.getContext('2d');
+const buf = document.createElement('canvas');
+const bctx = buf.getContext('2d');
+let K = 1;
+
+/* ---------- utilities ---------- */
+const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
+const ease = x => { x = clamp(x); return x * x * (3 - 2 * x); };
+const lerp = (a, b, t) => a + (b - a) * t;
+const fin = (t, s, d = 1) => ease((t - s) / d);
+const hx = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+const mix = (a, b, t) => { const A = hx(a), B = hx(b); t = clamp(t); return `rgb(${A.map((v, i) => Math.round(v + (B[i] - v) * t)).join(',')})`; };
+function rng(seed) { let s = seed % 2147483647; if (s <= 0) s += 2147483646; return () => (s = s * 16807 % 2147483647, (s - 1) / 2147483646); }
+const withA = (c, a, fn) => { if (a <= 0.001) return; c.save(); c.globalAlpha *= clamp(a); fn(); c.restore(); };
+
+const R0 = rng(7);
+const STARS = Array.from({ length: 230 }, () => ({ x: R0() * W, y: R0() * H * .72, r: R0() * 1.3 + .3, p: R0() * 6.3 }));
+const LETTERS = 'ابتثجحخدذرزسشصضطظعغفقكلمنهوي';
+
+function sky(c, stops) {
+  const g = c.createLinearGradient(0, 0, 0, H);
+  stops.forEach(([o, col]) => g.addColorStop(o, col));
+  c.fillStyle = g; c.fillRect(0, 0, W, H);
+}
+function stars(c, t, a = 1) {
+  if (a <= 0) return;
+  c.save(); c.fillStyle = '#fff4d8';
+  for (const s of STARS) {
+    c.globalAlpha = clamp(a) * (.45 + .55 * Math.sin(t * 1.3 + s.p) ** 2);
+    c.beginPath(); c.arc(s.x, s.y, s.r, 0, TAU); c.fill();
+  }
+  c.restore();
+}
+function glow(c, x, y, r, rgb, a) {
+  if (a <= 0) return;
+  const g = c.createRadialGradient(x, y, 0, x, y, r);
+  g.addColorStop(0, `rgba(${rgb},${a})`);
+  g.addColorStop(.4, `rgba(${rgb},${a * .35})`);
+  g.addColorStop(1, `rgba(${rgb},0)`);
+  c.fillStyle = g; c.fillRect(x - r, y - r, r * 2, r * 2);
+}
+function crescent(c, x, y, r, col) {
+  glow(c, x, y, r * 4, '240,210,140', .18);
+  c.save();
+  c.beginPath(); c.arc(x, y, r, 0, TAU); c.clip();
+  c.beginPath(); c.arc(x, y, r, 0, TAU); c.arc(x + r * .45, y - r * .2, r * .88, 0, TAU, true);
+  c.fillStyle = col; c.fill();
+  c.restore();
+}
+function ridge(c, base, amp, f, ph, col, seed = 0) {
+  c.beginPath(); c.moveTo(0, H);
+  for (let x = 0; x <= W + 16; x += 16) {
+    c.lineTo(x, base + Math.sin(x * f + ph) * amp + Math.sin(x * f * 2.3 + ph * 1.7 + seed) * amp * .4);
+  }
+  c.lineTo(W, H); c.closePath(); c.fillStyle = col; c.fill();
+}
+function star8(c, x, y, r) {
+  c.beginPath();
+  for (let k = 0; k < 2; k++) {
+    for (let i = 0; i < 4; i++) {
+      const a = k * Math.PI / 4 + i * Math.PI / 2 - Math.PI / 4;
+      const px = x + Math.cos(a) * r, py = y + Math.sin(a) * r;
+      i ? c.lineTo(px, py) : c.moveTo(px, py);
+    }
+    c.closePath();
+  }
+}
+function archPath(c, x0, w, spring, bottom) {
+  const xm = x0 + w / 2, x1 = x0 + w, ap = spring - w * .62;
+  c.beginPath(); c.moveTo(x0, bottom); c.lineTo(x0, spring);
+  c.bezierCurveTo(x0, spring - w * .38, xm - w * .12, ap + w * .12, xm, ap);
+  c.bezierCurveTo(xm + w * .12, ap + w * .12, x1, spring - w * .38, x1, spring);
+  c.lineTo(x1, bottom); c.closePath();
+}
+function makeCity(seed, o = {}) {
+  const { minH = 40, maxH = 120, domeP = .4, minP = .16 } = o;
+  const r = rng(seed), items = [];
+  let x = -30;
+  while (x < W + 30) {
+    const w = 34 + r() * 70, h = minH + r() * (maxH - minH);
+    const win = [];
+    for (let i = 0; i < 3; i++) if (r() < .45) win.push([.2 + r() * .6, .25 + r() * .55]);
+    items.push({ x, w, h, dome: r() < domeP, min: r() < minP, mh: h + 60 + r() * 80, win });
+    x += w - 4;
+  }
+  return items;
+}
+function city(c, cty, base, col, sc = 1, winA = 0) {
+  c.fillStyle = col;
+  for (const b of cty) {
+    const h = b.h * sc, w = b.w, x = b.x;
+    c.fillRect(x, base - h, w, h + 3);
+    if (b.dome) {
+      const r = w * .34, cx = x + w / 2, top = base - h;
+      c.beginPath(); c.moveTo(cx - r, top);
+      c.bezierCurveTo(cx - r * 1.15, top - r * .9, cx - r * .2, top - r * 1.25, cx, top - r * 1.55);
+      c.bezierCurveTo(cx + r * .2, top - r * 1.25, cx + r * 1.15, top - r * .9, cx + r, top);
+      c.fill();
+    }
+    if (b.min) {
+      const mx = x + w * .8, mw = 9, mh = b.mh * sc;
+      c.fillRect(mx - mw / 2, base - mh, mw, mh);
+      c.fillRect(mx - mw / 2 - 3, base - mh * .72, mw + 6, 4);
+      c.beginPath(); c.moveTo(mx - mw / 2, base - mh); c.lineTo(mx, base - mh - 22); c.lineTo(mx + mw / 2, base - mh); c.fill();
+    }
+  }
+  if (winA > 0) {
+    c.fillStyle = `rgba(255,196,110,${winA})`;
+    for (const b of cty) for (const [dx, dy] of b.win) c.fillRect(b.x + dx * b.w, base - dy * b.h * sc, 3, 5);
+    c.fillStyle = col;
+  }
+}
+/* silhouettes: y is the ground line */
+function figure(c, x, y, h, col, o = {}) {
+  const s = h / 100, t = o.t || 0, sw = o.walk ? Math.sin(t * 6) : 0;
+  c.save(); c.translate(x, y); c.scale(o.flip ? -s : s, s); c.fillStyle = col; c.strokeStyle = col;
+  if (o.walk) { c.beginPath(); c.ellipse(-8 + sw * 7, -2, 7, 3, 0, 0, TAU); c.ellipse(8 - sw * 7, -2, 7, 3, 0, 0, TAU); c.fill(); }
+  c.beginPath(); c.moveTo(-12, -64); c.lineTo(12, -64);
+  c.quadraticCurveTo(17, -30, 21 + sw * 3, -3); c.lineTo(-21 + sw * 3, -3);
+  c.quadraticCurveTo(-17, -30, -12, -64); c.fill();
+  c.beginPath(); c.ellipse(0, -64, 15, 8, 0, 0, TAU); c.fill();
+  c.beginPath(); c.arc(o.bow ? 3 : 0, -77 + (o.bow ? 3 : 0), 8, 0, TAU); c.fill();
+  if (!o.child) { c.beginPath(); c.ellipse(o.bow ? 3 : 0, -84 + (o.bow ? 3 : 0), 11, 7, 0, 0, TAU); c.fill(); }
+  if (o.staff) { c.lineWidth = 3; c.beginPath(); c.moveTo(20, -98); c.lineTo(24, 0); c.stroke(); }
+  if (o.spear) { c.lineWidth = 3; c.beginPath(); c.moveTo(18, 0); c.lineTo(26, -140); c.stroke(); c.beginPath(); c.moveTo(22, -140); c.lineTo(27, -158); c.lineTo(31, -139); c.fill(); }
+  c.restore();
+}
+function seated(c, x, y, h, col, o = {}) {
+  const s = h / 60, bob = o.bob || 0;
+  c.save(); c.translate(x, y); c.scale(o.flip ? -s : s, s); c.fillStyle = col;
+  c.beginPath(); c.moveTo(-26, 0); c.quadraticCurveTo(-24, -22, -10, -30); c.lineTo(10, -30); c.quadraticCurveTo(24, -22, 26, 0); c.closePath(); c.fill();
+  c.beginPath(); c.ellipse(0, -32, 13, 7, 0, 0, TAU); c.fill();
+  c.beginPath(); c.arc(bob * .6, -44 + bob, 7.5, 0, TAU); c.fill();
+  if (!o.child) { c.beginPath(); c.ellipse(bob * .6, -50 + bob, 10, 6.5, 0, 0, TAU); c.fill(); }
+  c.restore();
+}
+function camel(c, x, y, s, col, t) {
+  c.save(); c.translate(x, y); c.scale(s, s); c.fillStyle = col; c.strokeStyle = col; c.lineCap = 'round';
+  const k = Math.sin(t * 5) * 8;
+  c.lineWidth = 5;
+  [[-25, k], [-15, -k], [22, -k], [32, k]].forEach(([lx, d]) => { c.beginPath(); c.moveTo(lx, -40); c.lineTo(lx + d, 0); c.stroke(); });
+  c.beginPath(); c.moveTo(-36, -40); c.quadraticCurveTo(-36, -60, -16, -62); c.quadraticCurveTo(0, -92, 16, -62);
+  c.quadraticCurveTo(36, -60, 40, -45); c.lineTo(40, -37); c.lineTo(-36, -37); c.closePath(); c.fill();
+  c.lineWidth = 9; c.beginPath(); c.moveTo(34, -50); c.quadraticCurveTo(54, -54, 52, -80); c.stroke();
+  c.beginPath(); c.ellipse(58, -82, 10, 5, .2, 0, TAU); c.fill();
+  c.lineWidth = 3; c.beginPath(); c.moveTo(-36, -44); c.quadraticCurveTo(-44, -36, -40, -24); c.stroke();
+  c.restore();
+}
+function lamp(c, x, top, len, ang, a = 1) {
+  const lx = x + Math.sin(ang) * len, ly = top + Math.cos(ang) * len;
+  glow(c, lx, ly + 10, 360, '255,176,86', .42 * a);
+  c.strokeStyle = 'rgba(20,12,8,.9)'; c.lineWidth = 1.5;
+  c.beginPath(); c.moveTo(x, top); c.lineTo(lx, ly); c.stroke();
+  c.fillStyle = '#1a0f09';
+  c.beginPath(); c.moveTo(lx - 16, ly); c.lineTo(lx + 16, ly); c.lineTo(lx + 9, ly + 22); c.lineTo(lx - 9, ly + 22); c.closePath(); c.fill();
+  glow(c, lx, ly + 12, 26, '255,220,150', .9 * a);
+}
+function text(c, s, x, y, font, col, dir = 'rtl', align = 'center') {
+  c.font = font; c.fillStyle = col; c.textAlign = align; c.direction = dir; c.textBaseline = 'alphabetic';
+  c.fillText(s, x, y);
+}
+function layer(a, fn) {
+  if (a <= 0.001) return;
+  if (a >= .999) { fn(ctx); return; }
+  bctx.setTransform(K, 0, 0, K, 0, 0); bctx.globalAlpha = 1; bctx.clearRect(0, 0, W, H);
+  fn(bctx);
+  ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = a; ctx.drawImage(buf, 0, 0); ctx.restore();
+}
+
+/* ---------- precomputed props ---------- */
+const CITY_TUS = makeCity(11, { minH: 30, maxH: 95 });
+const CITY_BAG = makeCity(23, { minH: 50, maxH: 140, domeP: .5, minP: .22 });
+const CITY_FAR = makeCity(5, { minH: 18, maxH: 55, domeP: .3, minP: .1 });
+const R1 = rng(99);
+const RISE = Array.from({ length: 42 }, () => ({ ch: LETTERS[Math.floor(R1() * LETTERS.length)], x: 560 + R1() * 170, off: R1(), sp: .7 + R1() * .6 }));
+const CONV = Array.from({ length: 60 }, () => ({ ch: LETTERS[Math.floor(R1() * LETTERS.length)], x: R1() * W, y: 60 + R1() * 420, d: R1() * 1.2 }));
+const PAGES = Array.from({ length: 9 }, () => ({ vx: 40 + R1() * 120, vy: -60 - R1() * 80, r: R1() * 6 }));
+const RAIN = Array.from({ length: 240 }, () => ({ x: R1() * (W + 200), y: R1(), s: .7 + R1() * .6, l: 14 + R1() * 16 }));
+const HEADS = Array.from({ length: 140 }, (_, i) => { const row = Math.floor(i / 14), col = i % 14; return { x: 574 + col * 10 + (row % 2) * 5 + (R1() - .5) * 3, y: 462 - row * 11 + (R1() - .5) * 2, r: 3.4 + R1() * .8 }; });
+const TAWAF = Array.from({ length: 170 }, (_, i) => ({ a: i / 170 * TAU + R1() * .2, rr: .55 + R1() * .45 }));
+const BOLT = (() => { const p = [[930, 0]]; let x = 930, y = 0; while (y < 430) { y += 30 + R1() * 40; x += (R1() - .45) * 60; p.push([x, y]); } return p; })();
+const WORDS = ['الشكّ', 'اليقين', 'المال', 'الجاه', 'الشهرة', 'الحسّ', 'العقل', 'القلب'];
+const BOOKS = [
+  ['إحياء علوم الدين', 640, 150], ['المنقذ من الضلال', 330, 210], ['تهافت الفلاسفة', 960, 220],
+  ['مقاصد الفلاسفة', 1080, 400], ['المستصفى', 200, 400], ['بداية الهداية', 400, 560],
+  ['أيها الولد', 880, 560], ['مشكاة الأنوار', 640, 620], ['كيمياء السعادة', 1100, 610], ['ميزان العمل', 170, 610]
+];
+
+/* ---------- scenes ---------- */
+const SCENES = [
+{
+  ar: 'الافتتاح', en: 'Opening', dur: 11,
+  subs: [
+    [3.5, 'حكاية رجلٍ طلب اليقين، فترك الدنيا وهي مقبلةٌ عليه', 'The story of a man who sought certainty, and left the world just as it came to him.']
+  ],
+  draw(c, t) {
+    sky(c, [[0, '#060914'], [.6, '#101831'], [1, '#1c2546']]);
+    stars(c, t);
+    crescent(c, 1050, 140, 38, '#ecd08a');
+    c.save(); c.translate(W / 2, H / 2 - 20); c.rotate(t * .04);
+    c.strokeStyle = `rgba(217,164,65,${.32 * fin(t, 0, 2.5)})`; c.lineWidth = 1.2;
+    for (let i = 0; i < 16; i++) { c.save(); c.rotate(i * TAU / 16); star8(c, 0, -262, 20); c.stroke(); c.restore(); }
+    star8(c, 0, 0, 225); c.stroke();
+    c.restore();
+    ridge(c, 640, 20, .004, 1, '#0a0d19');
+    const a = fin(t, 1.2, 1.8);
+    glow(c, W / 2, H / 2, 380, '217,164,65', .12 * a);
+    text(c, 'أبو حامد الغزالي', W / 2, H / 2 + 22, '700 118px "Aref Ruqaa", "Amiri", serif', `rgba(233,199,123,${a})`);
+    text(c, 'حُجّة الإسلام · ٤٥٠ – ٥٠٥ هـ', W / 2, H / 2 + 88, '400 36px "Amiri", serif', `rgba(239,227,200,${fin(t, 2.4, 1.5)})`);
+    text(c, 'ABU HAMID AL-GHAZALI  ·  1058 – 1111 CE', W / 2, H / 2 + 132, 'italic 500 23px "Cormorant Garamond", serif', `rgba(168,162,143,${fin(t, 3, 1.5)})`, 'ltr');
+  }
+},
+{
+  ar: 'طوس', en: 'Tus', dur: 16,
+  subs: [
+    [.6, 'طوس، خراسان — سنة ٤٥٠ للهجرة (١٠٥٨م)', 'Tus, Khorasan — 450 AH (1058 CE).'],
+    [4.6, 'كان أبوه يغزل الصوف ويبيعه في دكّانه، ومن هذه الحرفة جاء لقب «الغزّالي»', 'His father spun and sold wool in his shop. The name “al-Ghazzali” comes from that craft.'],
+    [10, 'وقبل وفاته أوصى بابنيه محمدٍ وأحمد إلى صديقٍ له صوفيّ، ليعلّمهما الخطّ والعلم', 'Before he died, he entrusted his sons Muhammad and Ahmad to a Sufi friend, to teach them to write and learn.']
+  ],
+  draw(c, t) {
+    const k = ease(t / 15);
+    sky(c, [[0, mix('#0a0f2c', '#33386a', k)], [.5, mix('#1f1a3a', '#b0705c', k)], [.78, mix('#2c2136', '#efb468', k)], [1, mix('#2c2136', '#efb468', k)]]);
+    stars(c, t, 1 - k * 1.4);
+    glow(c, 380, lerp(640, 540, k), 360, '255,196,110', .75 * k);
+    c.fillStyle = `rgba(255,220,150,${k})`; c.beginPath(); c.arc(380, lerp(640, 545, k), 34, 0, TAU); c.fill();
+    ridge(c, 500, 18, .006, 1, mix('#131531', '#6a4a5e', k));
+    city(c, CITY_TUS, 560, mix('#0a0d1e', '#3a2634', k), .9, (1 - k) * .8);
+    c.fillStyle = mix('#07070f', '#1f1518', k); c.fillRect(0, 556, W, H);
+    // house with lit doorway
+    const hc = mix('#141220', '#3d2b27', k);
+    c.fillStyle = hc; c.fillRect(740, 470, 400, 182); c.fillRect(730, 462, 420, 12);
+    const dg = c.createLinearGradient(0, 520, 0, 652); dg.addColorStop(0, '#f2ae5a'); dg.addColorStop(1, '#7a3f1d');
+    archPath(c, 815, 180, 560, 652); c.fillStyle = dg; c.fill();
+    glow(c, 905, 600, 260, '255,170,80', .35);
+    const sil = '#08060a';
+    const fatherA = 1 - fin(t, 11, 1.6);
+    // spinning wheel
+    const ang = Math.min(t, 11.5) * 2.4;
+    c.save(); c.translate(955, 598); c.strokeStyle = sil; c.lineWidth = 3;
+    c.beginPath(); c.arc(0, 0, 30, 0, TAU); c.stroke();
+    for (let i = 0; i < 6; i++) { const a = ang + i * TAU / 6; c.beginPath(); c.moveTo(0, 0); c.lineTo(Math.cos(a) * 30, Math.sin(a) * 30); c.stroke(); }
+    c.beginPath(); c.moveTo(-18, 52); c.lineTo(0, 0); c.lineTo(18, 52); c.stroke();
+    c.restore();
+    withA(c, fatherA, () => {
+      seated(c, 872, 650, 88, sil, { bob: Math.sin(t * 2.4) * 1.2 });
+      c.strokeStyle = 'rgba(240,225,200,.7)'; c.lineWidth = 1; c.beginPath(); c.moveTo(895, 592); c.quadraticCurveTo(925, 580, 953, 598); c.stroke();
+    });
+    figure(c, 1040, 664, 58, '#040306', { child: true });
+    figure(c, 1072, 664, 50, '#040306', { child: true, flip: true });
+    withA(c, fin(t, 11.4, 1.6), () => figure(c, 1170, 668, 104, '#040306', { staff: true, flip: true }));
+  }
+},
+{
+  ar: 'طلب العلم', en: 'Seeking knowledge', dur: 13,
+  subs: [
+    [.6, 'نفِد المال الذي تركه الأب، فالتحق الأخوان بمدرسةٍ تُطعم طلبتها', 'When their father’s money ran out, the brothers joined a school that fed its students.'],
+    [6, 'وكان يقول بعدها: «طلبنا العلمَ لغير الله، فأبى أن يكون إلا لله»', 'He would later say: “We sought knowledge for other than God, but it refused to be for anything but God.”']
+  ],
+  draw(c, t) {
+    c.fillStyle = '#24160f'; c.fillRect(0, 0, W, H);
+    for (let i = 0; i < 5; i++) {
+      const x0 = 70 + i * 235;
+      c.save(); archPath(c, x0, 190, 320, 560); c.clip();
+      sky(c, [[0, '#0b1230'], [1, '#1d2447']]); stars(c, t, .9);
+      c.restore();
+      c.strokeStyle = 'rgba(217,164,65,.22)'; c.lineWidth = 2; archPath(c, x0 - 6, 202, 322, 560); c.stroke();
+    }
+    lamp(c, 640, 0, 190, Math.sin(t * 1.1) * .06);
+    c.fillStyle = '#170d08'; c.fillRect(0, 556, W, H);
+    c.fillStyle = '#4e1c19'; c.fillRect(380, 600, 520, 90);
+    c.strokeStyle = 'rgba(217,164,65,.35)'; c.lineWidth = 2; c.strokeRect(390, 608, 500, 74);
+    const sil = '#0b0605';
+    seated(c, 520, 640, 70, sil, { child: true, bob: Math.sin(t * 2) * 1.5 });
+    seated(c, 760, 640, 64, sil, { child: true, flip: true, bob: Math.sin(t * 2 + 1) * 1.5 });
+    // rahla stands with books
+    [[590, 1], [690, -1]].forEach(([x]) => {
+      c.strokeStyle = sil; c.lineWidth = 4; c.beginPath(); c.moveTo(x - 16, 640); c.lineTo(x + 16, 606); c.moveTo(x + 16, 640); c.lineTo(x - 16, 606); c.stroke();
+      c.fillStyle = '#d9c9a4'; c.beginPath(); c.moveTo(x - 24, 604); c.quadraticCurveTo(x - 12, 598, x, 604); c.quadraticCurveTo(x + 12, 598, x + 24, 604); c.lineTo(x + 22, 612); c.lineTo(x - 22, 612); c.closePath(); c.fill();
+    });
+    c.font = '400 30px "Amiri", serif'; c.textAlign = 'center'; c.direction = 'rtl';
+    for (const p of RISE) {
+      const life = (t * .16 * p.sp + p.off) % 1;
+      const y = 590 - life * 420, x = p.x + Math.sin(life * 6 + p.off * 10) * 34;
+      c.fillStyle = `rgba(233,199,123,${Math.sin(life * Math.PI) * .75 * fin(t, .5, 1.2)})`;
+      c.fillText(p.ch, x, y);
+    }
+    const q = fin(t, 6.3, 1.6);
+    glow(c, 640, 70, 300, '217,164,65', .15 * q);
+    text(c, 'فأبى أن يكون إلا لله', 640, 88, '700 54px "Aref Ruqaa", "Amiri", serif', `rgba(233,199,123,${q})`);
+  }
+},
+{
+  ar: 'طريق جرجان', en: 'The road from Jurjan', dur: 16,
+  subs: [
+    [.6, 'في طريق عودته من جرجان، اعترض قطّاعُ الطرق القافلة', 'On his way home from Jurjan, bandits stopped his caravan.'],
+    [4.8, 'أخذوا كل شيء، حتى المِخلاة التي فيها ما كتبه من العلم', 'They took everything, even the bag that held his notes.'],
+    [8.8, 'قال له كبيرهم: كيف تدّعي العلم، وقد أخذناه منك فبقيتَ بلا علم؟', 'Their leader mocked him: “What knowledge is it, if we can take it and leave you with none?”'],
+    [12.4, 'فلما بلغ طوس، أقبل على كتبه ثلاث سنين حتى حفظها كلها', 'Back in Tus, he spent three years committing every note to memory.']
+  ],
+  draw(c, t) {
+    sky(c, [[0, '#070b1a'], [.6, '#141b36'], [1, '#27284a']]);
+    stars(c, t); crescent(c, 230, 120, 32, '#f1d58f');
+    ridge(c, 470, 30, .003, t * .05, '#1a1c35', 1);
+    ridge(c, 545, 22, .005, t * .1 + 2, '#22223e', 2);
+    const aC = 1 - fin(t, 9, 1), bx = 110 + t * 22;
+    const sil = '#06060d';
+    withA(c, aC, () => {
+      for (let i = 0; i < 4; i++) {
+        camel(c, bx + 80 + i * 170, 616, .9, sil, t + i);
+        if (i < 3) figure(c, bx + 165 + i * 170, 618, 72, sil, { walk: 1, t: t + i * .7 });
+      }
+      figure(c, bx, 618, 76, sil, { walk: 1, t });
+      if (t < 6) { c.fillStyle = '#8a6a45'; c.fillRect(bx + 10, 570, 14, 12); }
+    });
+    const aB = fin(t, 4, 1.2) * (1 - fin(t, 9, 1)), rise = (1 - fin(t, 4, 1.6)) * 90;
+    withA(c, aB, () => {
+      [[990, 104], [1070, 96], [1160, 100]].forEach(([x, h], i) => figure(c, x, 618 + rise + i * 4, h, '#0b0306', { spear: 1, flip: true }));
+      if (t >= 6) {
+        const q = ease((t - 6) / 1.8);
+        c.fillStyle = '#8a6a45'; c.fillRect(lerp(bx + 10, 975, q), lerp(570, 540, q) - Math.sin(q * Math.PI) * 50, 14, 12);
+      }
+      if (t > 7.4) for (const p of PAGES) {
+        const u = t - 7.4;
+        c.save(); c.translate(975 + p.vx * u, 540 + p.vy * u + 25 * u * u); c.rotate(p.r + u * 3);
+        c.fillStyle = 'rgba(239,227,200,.85)'; c.fillRect(-7, -9, 14, 18); c.restore();
+      }
+    });
+    ridge(c, 624, 8, .004, t * .15, '#2c2a47', 3);
+    const aS = fin(t, 9.4, 1);
+    withA(c, aS, () => {
+      figure(c, 640, 630, 124, '#05050b', { walk: 1, t, bow: t < 12.4 });
+      if (t > 12) {
+        c.font = '400 30px "Amiri", serif'; c.textAlign = 'center'; c.direction = 'rtl';
+        for (const p of CONV) {
+          const q = ease((t - 12.3 - p.d) / 2.2);
+          c.fillStyle = `rgba(233,199,123,${fin(t, 12, .8) * (1 - q * .9)})`;
+          c.fillText(p.ch, lerp(p.x, 640, q), lerp(p.y, 530, q));
+        }
+      }
+      glow(c, 640, 526, 60, '255,210,130', .7 * fin(t, 14.2, 1.2));
+    });
+  }
+},
+{
+  ar: 'نيسابور', en: 'Nishapur', dur: 14,
+  subs: [
+    [.6, 'نيسابور — في حلقة إمام الحرمين الجُوَينيّ، أعلم أهل زمانه', 'Nishapur — in the circle of Imam al-Haramayn al-Juwayni, the leading scholar of his day.'],
+    [5, 'درس الفقه والأصول والكلام والمنطق، ولزم شيخه حتى وفاته سنة ٤٧٨هـ', 'He studied law, legal theory, theology and logic, and stayed with his teacher until his death in 478 AH.'],
+    [9.8, 'ثم قصد مجلس الوزير نظام الملك، فناظر العلماء وعلا ذكره', 'He then joined the court of the vizier Nizam al-Mulk, debated its scholars, and rose to fame.']
+  ],
+  draw(c, t) {
+    c.fillStyle = '#0f1830'; c.fillRect(0, 0, W, H);
+    c.strokeStyle = 'rgba(217,164,65,.07)'; c.lineWidth = 1;
+    for (let y = 40; y < 560; y += 80) for (let x = 40 + (y / 80 % 2) * 40; x < W; x += 80) { star8(c, x, y, 22); c.stroke(); }
+    const ig = c.createLinearGradient(0, 40, 0, 560); ig.addColorStop(0, '#2c3d6a'); ig.addColorStop(1, '#172240');
+    archPath(c, 400, 480, 330, 560); c.fillStyle = ig; c.fill();
+    c.strokeStyle = 'rgba(217,164,65,.5)'; c.lineWidth = 3; c.stroke();
+    c.strokeStyle = 'rgba(217,164,65,.18)'; c.lineWidth = 1.5;
+    for (let row = 0; row < 4; row++) {
+      const n = 3 + row * 2, w = 150 + row * 70, y = 110 + row * 42;
+      for (let i = 0; i < n; i++) { const x = 640 - w / 2 + (i + .5) * w / n; c.beginPath(); c.arc(x, y, w / n / 2, Math.PI, 0); c.stroke(); }
+    }
+    [460, 640, 820].forEach((x, i) => lamp(c, x, 0, 150 + (i === 1 ? 40 : 0), Math.sin(t * 1.2 + i) * .05, .8));
+    c.fillStyle = '#0b1122'; c.fillRect(0, 556, W, H);
+    c.fillStyle = '#4a1a1c'; c.beginPath(); c.ellipse(640, 620, 520, 92, 0, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(217,164,65,.35)'; c.lineWidth = 2; c.beginPath(); c.ellipse(640, 620, 500, 82, 0, 0, TAU); c.stroke();
+    const sil = '#060912';
+    c.fillStyle = '#1f1417'; c.fillRect(590, 536, 100, 16);
+    seated(c, 640, 540, 92, sil, { bob: Math.sin(t * 1.5) * 1.5 });
+    const S = [];
+    for (let i = 0; i < 14; i++) {
+      const a = Math.PI * (.08 + i / 13 * .84);
+      if (a > Math.PI * .43 && a < Math.PI * .57) continue;
+      const x = 640 + Math.cos(a) * 450, y = 604 + Math.sin(a) * 84;
+      S.push([x, y, 46 + (y - 604) * .5, i]);
+    }
+    S.sort((a, b) => a[1] - b[1]).forEach(([x, y, h, i]) => seated(c, x, y, h, sil, { flip: x > 640, bob: Math.max(0, Math.sin(t * 2.2 + i)) * 2 }));
+  }
+},
+{
+  ar: 'بغداد', en: 'Baghdad', dur: 16,
+  subs: [
+    [.6, 'بغداد — سنة ٤٨٤هـ (١٠٩١م)', 'Baghdad — 484 AH (1091 CE).'],
+    [3.8, 'وُلّي التدريس في المدرسة النظامية، أرفع منابر العلم في عصره، ولم يتجاوز الرابعة والثلاثين', 'He was made professor at the Nizamiyya, the most prestigious college of the age, at about thirty-four.'],
+    [8.6, 'كان يحضر درسَه المئاتُ من العلماء والطلبة، ولُقّب «حجة الإسلام»', 'Hundreds of scholars and students attended his lectures. He became known as “the Proof of Islam”.'],
+    [12.6, 'وفيها ألّف «مقاصد الفلاسفة»، ثم ردّ عليهم في «تهافت الفلاسفة»', 'There he wrote The Aims of the Philosophers, then answered them in The Incoherence of the Philosophers.']
+  ],
+  draw(c, t) {
+    sky(c, [[0, '#191d48'], [.42, '#8a4a52'], [.64, '#e39a50'], [1, '#e39a50']]);
+    stars(c, t, .35);
+    glow(c, 1060, 440, 300, '255,190,110', .7);
+    c.fillStyle = '#ffd690'; c.beginPath(); c.arc(1060, 446, 30, 0, TAU); c.fill();
+    const cc = '#1b1225';
+    city(c, CITY_BAG, 472, cc, 1, .45);
+    // Nizamiyya portal
+    c.fillStyle = '#271a2b'; c.fillRect(505, 232, 270, 242);
+    c.strokeStyle = 'rgba(217,164,65,.55)'; c.lineWidth = 2; c.strokeRect(520, 246, 240, 228);
+    [485, 795].forEach(x => {
+      c.fillStyle = '#271a2b'; c.fillRect(x - 12, 150, 24, 324);
+      c.fillRect(x - 17, 210, 34, 6); c.beginPath(); c.moveTo(x - 12, 150); c.lineTo(x, 116); c.lineTo(x + 12, 150); c.fill();
+    });
+    const og = c.createLinearGradient(0, 300, 0, 474); og.addColorStop(0, '#f6c677'); og.addColorStop(1, '#b8622e');
+    archPath(c, 560, 160, 400, 474); c.fillStyle = og; c.fill();
+    c.save(); archPath(c, 560, 160, 400, 474); c.clip();
+    figure(c, 640, 400, 44, '#2a1216');
+    c.fillStyle = '#2a1216'; c.fillRect(622, 400, 36, 6);
+    const n = Math.floor(fin(t, 3.8, 8) * HEADS.length);
+    for (let i = 0; i < n; i++) { const p = HEADS[i]; c.beginPath(); c.arc(p.x, p.y, p.r, 0, TAU); c.fill(); }
+    c.restore();
+    // Tigris
+    const rg = c.createLinearGradient(0, 472, 0, H); rg.addColorStop(0, '#3b3050'); rg.addColorStop(1, '#0b1022');
+    c.fillStyle = rg; c.fillRect(0, 472, W, H);
+    c.save(); c.beginPath(); c.rect(0, 472, W, H); c.clip();
+    c.translate(0, 944); c.scale(1, -1); c.globalAlpha = .22; city(c, CITY_BAG, 472, '#000', 1); c.restore();
+    for (let y = 478; y < H; y += 6) {
+      const d = (y - 472) / 250;
+      const w1 = 70 * (1 + d) * (.6 + .4 * Math.sin(t * 2 + y * .3));
+      c.fillStyle = `rgba(255,200,120,${.5 * (1 - d * .7)})`; c.fillRect(1060 - w1 / 2 + Math.sin(t + y * .1) * 8, y, w1, 2);
+      const w2 = 40 * (1 + d) * (.6 + .4 * Math.sin(t * 2.3 + y * .2));
+      c.fillStyle = `rgba(246,198,119,${.3 * (1 - d * .8)})`; c.fillRect(640 - w2 / 2 + Math.sin(t * 1.3 + y * .1) * 6, y, w2, 2);
+    }
+    const bx = ((t * 38) % (W + 240)) - 120;
+    c.fillStyle = '#0a0a14';
+    c.beginPath(); c.moveTo(bx - 40, 560); c.quadraticCurveTo(bx, 585, bx + 40, 560); c.closePath(); c.fill();
+    figure(c, bx + 8, 566, 34, '#0a0a14', { staff: 1 });
+    text(c, 'مقاصد الفلاسفة', 1040, 110, '700 40px "Aref Ruqaa", "Amiri", serif', `rgba(250,226,170,${fin(t, 12.8, 1.2)})`);
+    text(c, 'تهافت الفلاسفة', 240, 110, '700 40px "Aref Ruqaa", "Amiri", serif', `rgba(250,226,170,${fin(t, 14, 1.2)})`);
+  }
+},
+{
+  ar: 'الأزمة', en: 'The crisis', dur: 15,
+  subs: [
+    [.6, 'لكنّ قلبه لم يطمئن. سأل نفسه: ما العلم اليقيني الذي لا يبقى معه ريب؟', 'But his heart found no rest. He asked: what is the knowledge that leaves no room for doubt?'],
+    [5, 'سنة ٤٨٨هـ اعتُقل لسانه عن التدريس، وعجز عن الطعام، ويئس منه الأطباء', 'In 488 AH his tongue locked. He could not teach or eat, and the physicians gave up on him.'],
+    [10, 'فترك المنصب والجاه، وخرج من بغداد في ثياب الزهّاد يطلب الحق', 'He gave up his post and his standing, and left Baghdad in the plain clothes of an ascetic, seeking the truth.']
+  ],
+  draw(c, t) {
+    sky(c, [[0, '#06070e'], [.7, '#141828'], [1, '#1b1f30']]);
+    city(c, CITY_FAR, 560, '#0e1020', .8, .12);
+    ridge(c, 560, 5, .004, 0, '#090a11');
+    const e = ease((t - 9.6) / 5);
+    const fx = 640 + e * 470, fh = 150 - e * 80, fy = 606 - e * 34;
+    const wa = fin(t, .4, 1.5) * (1 - fin(t, 9, 1.5));
+    const wc = mix('#e9c77b', '#c0643f', fin(t, 4.8, 1.5));
+    const pass = back => {
+      c.font = '400 30px "Amiri", serif'; c.textAlign = 'center'; c.direction = 'rtl';
+      WORDS.forEach((w, i) => {
+        const a = i / WORDS.length * TAU + t * .35, s = Math.sin(a);
+        if ((s < 0) !== back) return;
+        const jit = t > 5 ? Math.sin(t * 23 + i) * 2 : 0;
+        c.globalAlpha = wa * (.35 + .45 * (s + 1) / 2);
+        c.font = `400 ${Math.round(28 + s * 8)}px "Amiri", serif`;
+        c.fillStyle = wc; c.fillText(w, 640 + Math.cos(a) * 270 + jit, 470 + s * 90);
+      });
+      c.globalAlpha = 1;
+    };
+    pass(true);
+    glow(c, 1190, 540, 140, '255,220,150', .8 * fin(t, 11.5, 2.5));
+    figure(c, fx, fy, fh, '#020205', { walk: t > 9.6, t, bow: t < 9.6 });
+    pass(false);
+    const rainN = Math.floor(RAIN.length * (1 - fin(t, 11, 3) * .8));
+    c.strokeStyle = 'rgba(170,184,220,.32)'; c.lineWidth = 1.2; c.beginPath();
+    for (let i = 0; i < rainN; i++) {
+      const p = RAIN[i], y = ((p.y * (H + 60) + t * 760 * p.s) % (H + 60)) - 30, x = p.x - y * .18;
+      c.moveTo(x, y); c.lineTo(x - 4, y + p.l);
+    }
+    c.stroke();
+    for (const f of [2.1, 7.2]) {
+      if (t > f && t < f + .35) {
+        const a = 1 - (t - f) / .35;
+        c.fillStyle = `rgba(210,220,255,${.28 * a})`; c.fillRect(0, 0, W, H);
+        c.strokeStyle = `rgba(240,245,255,${a})`; c.lineWidth = 2.5; c.beginPath();
+        BOLT.forEach(([x, y], i) => i ? c.lineTo(x, y) : c.moveTo(x, y)); c.stroke();
+      }
+    }
+  }
+},
+{
+  ar: 'الرحلة', en: 'The journey', dur: 19,
+  subs: [
+    [.6, 'دمشق — اعتكف في الجامع الأموي، يصعد منارته طول النهار ويغلق بابها على نفسه', 'Damascus — he withdrew into the Umayyad Mosque, spending whole days in its minaret with the door shut.'],
+    [6.8, 'بيت المقدس — كان يدخل كل يوم قبة الصخرة ويغلق بابها على نفسه', 'Jerusalem — each day he entered the Dome of the Rock and closed its door behind him.'],
+    [13, 'ثم حجّ إلى مكة، وزار المدينة، في عزلةٍ وسياحةٍ دامت نحو عشر سنين', 'Then he made the pilgrimage to Mecca and visited Medina, in a retreat that lasted about ten years.']
+  ],
+  draw(c, t) {
+    const V = [damascus, jerusalem, mecca];
+    const v = Math.min(2, Math.floor(t / 6.3)), u = t - v * 6.3;
+    V[v](c, t);
+    if (v < 2 && u > 5.4) layer((u - 5.4) / .9, cc => V[v + 1](cc, t));
+    const stops = ['بغداد', 'دمشق', 'القدس', 'مكة', 'المدينة'];
+    const cur = clamp((t + .3) / 6.3 + 1, 1, 4);
+    const x0 = 1120, x1 = 160, px = i => lerp(x0, x1, i / 4);
+    c.strokeStyle = 'rgba(239,227,200,.25)'; c.lineWidth = 2; c.setLineDash([4, 6]);
+    c.beginPath(); c.moveTo(x0, 52); c.lineTo(x1, 52); c.stroke(); c.setLineDash([]);
+    c.strokeStyle = 'rgba(217,164,65,.9)'; c.beginPath(); c.moveTo(x0, 52); c.lineTo(lerp(x0, x1, Math.min(cur, 4) / 4), 52); c.stroke();
+    stops.forEach((s, i) => {
+      const on = i <= cur + .01;
+      c.fillStyle = on ? '#e9c77b' : 'rgba(239,227,200,.35)';
+      c.beginPath(); c.arc(px(i), 52, on ? 6 : 4, 0, TAU); c.fill();
+      text(c, s, px(i), 88, '400 24px "Amiri", serif', on ? 'rgba(239,227,200,.95)' : 'rgba(239,227,200,.45)');
+    });
+  }
+},
+{
+  ar: 'الإحياء', en: 'The Revival', dur: 16,
+  subs: [
+    [.6, 'في عزلته كتب أعظم كتبه: «إحياء علوم الدين»', 'In his seclusion he wrote his masterwork: The Revival of the Religious Sciences.'],
+    [5, 'أربعون كتابًا في أربعة أرباع: العبادات، والعادات، والمهلكات، والمنجيات', 'Forty books in four quarters: acts of worship, daily life, the vices that destroy, and the virtues that save.'],
+    [10.6, 'وكتب عن خلاصه: لم يكن ذلك بنظم دليل، بل بنورٍ قذفه الله تعالى في الصدر', 'Of his recovery he wrote: it came not from arranging proofs, but from a light God cast into the heart.']
+  ],
+  draw(c, t) {
+    c.fillStyle = '#140e0a'; c.fillRect(0, 0, W, H);
+    const fl = 1 + Math.sin(t * 13) * .04 + Math.sin(t * 7.3) * .05;
+    glow(c, 150, 450, 520 * fl, '255,170,80', .45);
+    c.fillStyle = '#1e1510'; c.fillRect(0, 610, W, H);
+    // candle
+    c.fillStyle = '#1a100a'; c.fillRect(120, 596, 60, 14);
+    c.fillStyle = '#e8dcc0'; c.fillRect(138, 500, 24, 98);
+    c.save(); c.translate(150, 492); c.scale(1, fl);
+    c.fillStyle = '#ffd98a'; c.beginPath(); c.moveTo(0, -30); c.quadraticCurveTo(10, -8, 0, 4); c.quadraticCurveTo(-10, -8, 0, -30); c.fill();
+    c.restore();
+    glow(c, 150, 478, 40, '255,236,180', .9);
+    // light beam
+    const lb = fin(t, 10.6, 2);
+    if (lb > 0) {
+      const g = c.createLinearGradient(0, 0, 0, 620);
+      g.addColorStop(0, `rgba(255,232,170,${.22 * lb})`); g.addColorStop(1, `rgba(255,232,170,${.04 * lb})`);
+      c.fillStyle = g; c.beginPath(); c.moveTo(580, 0); c.lineTo(700, 0); c.lineTo(900, 620); c.lineTo(380, 620); c.closePath(); c.fill();
+      c.fillStyle = `rgba(255,240,200,${.6 * lb})`;
+      for (let i = 0; i < 40; i++) { const x = 460 + ((i * 97 + t * 8) % 360), y = (i * 53 + t * (10 + i % 5 * 4)) % 600; c.fillRect(x, y, 2, 2); }
+    }
+    // book
+    const pg = side => {
+      const g = c.createLinearGradient(640 - 230 * side, 0, 640, 0);
+      g.addColorStop(0, '#d9c8a2'); g.addColorStop(.85, '#efe3c8'); g.addColorStop(1, '#cdb88f');
+      c.fillStyle = g; c.beginPath(); c.moveTo(640, 478);
+      c.quadraticCurveTo(640 - 110 * side, 446, 640 - 232 * side, 468); c.lineTo(640 - 232 * side, 606);
+      c.quadraticCurveTo(640 - 110 * side, 588, 640, 616); c.closePath(); c.fill();
+      c.strokeStyle = 'rgba(90,50,30,.35)'; c.lineWidth = 2;
+      for (let j = 0; j < 7; j++) { const y = 492 + j * 15; c.beginPath(); c.moveTo(640 - 30 * side, y + 4); c.lineTo(640 - 205 * side, y - 4 + (j === 0 ? 8 : 0)); c.stroke(); }
+    };
+    c.fillStyle = '#3a1712'; c.fillRect(398, 604, 484, 18);
+    pg(1); pg(-1);
+    if (t < 9.6) {
+      const p = (t % 3.2) / 3.2, cs = Math.cos(p * Math.PI), lift = Math.sin(p * Math.PI);
+      c.fillStyle = cs > 0 ? '#e6d6b2' : '#d4c197';
+      c.beginPath(); c.moveTo(640, 478); c.lineTo(640 + 232 * cs, 468 - lift * 46); c.lineTo(640 + 232 * cs, 606 - lift * 24); c.lineTo(640, 616); c.closePath(); c.fill();
+    }
+    text(c, 'إحياء علوم الدين', 640, 150, '700 70px "Aref Ruqaa", "Amiri", serif', `rgba(233,199,123,${fin(t, .8, 1.5)})`);
+    const Q = ['العبادات', 'العادات', 'المهلكات', 'المنجيات'];
+    Q.forEach((q, i) => {
+      const a = fin(t, 5.3 + i * .9, .8), x = 1080 - i * 190;
+      if (a <= 0) return;
+      c.strokeStyle = `rgba(217,164,65,${a})`; c.lineWidth = 1.5; star8(c, x, 236, 16); c.stroke();
+      text(c, ['١', '٢', '٣', '٤'][i], x, 244, '400 20px "Amiri", serif', `rgba(233,199,123,${a})`);
+      text(c, 'ربع ' + q, x, 300, '400 30px "Amiri", serif', `rgba(239,227,200,${a})`);
+    });
+  }
+},
+{
+  ar: 'الفجر الأخير', en: 'The last dawn', dur: 19,
+  subs: [
+    [.6, 'درّس في نيسابور قليلًا، ثم عاد إلى طوس، فبنى مدرسةً وخانقاه للمريدين', 'He taught briefly in Nishapur, then returned to Tus and built a school and a lodge for his students.'],
+    [6, 'فجر الاثنين، ١٤ جمادى الآخرة سنة ٥٠٥هـ، توضّأ وصلّى، ثم قال: عليَّ بالكفن', 'At dawn on Monday, 14 Jumada al-Akhira 505 AH, he made his ablutions, prayed, and asked for his shroud.'],
+    [10.8, 'فأخذه وقبّله، ووضعه على عينيه، وقال: «سمعًا وطاعةً للدخول على الملك»', 'He kissed it, laid it over his eyes, and said: “I hear and obey, to go in to the King.”'],
+    [15, 'ثم مدّ رجليه مستقبلَ القبلة، ومات قبل الإسفار', 'Then he stretched out his legs toward the qibla, and died before daybreak.']
+  ],
+  draw(c, t) {
+    exterior(c, t);
+    layer(fin(t, 5.2, 1.2), cc => interior(cc, t));
+  }
+},
+{
+  ar: 'الأثر', en: 'Legacy', dur: 15,
+  subs: [
+    [.6, 'رحل عن خمسٍ وخمسين سنة، ودُفن في طابران طوس', 'He died at fifty-five, and was buried at Tabaran in Tus.'],
+    [5, 'وبقيت كتبه في الفقه والأصول والكلام والفلسفة والتصوف تُقرأ بعد تسعة قرون', 'His books on law, legal theory, theology, philosophy and Sufism are still read nine centuries later.'],
+    [10.4, 'رحم الله أبا حامد', 'May God have mercy on Abu Hamid.']
+  ],
+  draw(c, t) {
+    sky(c, [[0, '#05070f'], [.7, '#0e1428'], [1, '#18203c']]);
+    stars(c, t);
+    ridge(c, 650, 12, .003, 2, '#070910');
+    c.strokeStyle = 'rgba(217,164,65,.14)'; c.lineWidth = 1;
+    BOOKS.forEach(([, x, y], i) => {
+      if (i === 0) return;
+      const a = fin(t, .6 + i * .55, .8); if (a <= 0) return;
+      const [, px, py] = BOOKS[i - 1];
+      c.globalAlpha = a; c.beginPath(); c.moveTo(px, py); c.lineTo(x, y); c.stroke(); c.globalAlpha = 1;
+    });
+    BOOKS.forEach(([s, x, y], i) => {
+      const a = fin(t, .4 + i * .55, 1) * (1 - fin(t, 9.4, 1.2) * .6);
+      glow(c, x, y - 10, 70, '217,164,65', .2 * a);
+      c.fillStyle = `rgba(255,236,190,${a})`; c.beginPath(); c.arc(x, y - 44, 2.5, 0, TAU); c.fill();
+      text(c, s, x, y, `400 ${i === 0 ? 34 : 26}px "Amiri", serif`, `rgba(239,227,200,${a})`);
+    });
+    const e = fin(t, 10, 1.6);
+    glow(c, 640, 380, 320, '217,164,65', .16 * e);
+    text(c, 'رحم الله أبا حامد', 640, 400, '700 76px "Aref Ruqaa", "Amiri", serif', `rgba(233,199,123,${e})`);
+    text(c, 'النهاية  ·  THE END', 640, 460, 'italic 500 22px "Cormorant Garamond", serif', `rgba(168,162,143,${fin(t, 11.6, 1.2)})`, 'ltr');
+  }
+}
+];
+
+function damascus(c, t) {
+  sky(c, [[0, '#080d22'], [1, '#1f2a4d']]);
+  stars(c, t);
+  crescent(c, 250, 170, 28, '#f1d58f');
+  ridge(c, 470, 26, .004, 3, '#10152b');
+  const m = '#0b0f20';
+  c.fillStyle = m; c.fillRect(220, 470, 840, 150);
+  c.fillRect(590, 438, 100, 34);
+  c.beginPath(); c.moveTo(580, 440); c.lineTo(640, 380); c.lineTo(700, 440); c.fill();
+  c.fillRect(270, 330, 26, 140); c.beginPath(); c.moveTo(270, 330); c.lineTo(283, 300); c.lineTo(296, 330); c.fill();
+  const mx = 900;
+  c.fillRect(mx - 20, 250, 40, 222);
+  c.fillRect(mx - 28, 330, 56, 8); c.fillRect(mx - 26, 242, 52, 10);
+  c.fillRect(mx - 15, 196, 30, 48);
+  c.beginPath(); c.moveTo(mx - 17, 196); c.quadraticCurveTo(mx - 10, 160, mx, 148); c.quadraticCurveTo(mx + 10, 160, mx + 17, 196); c.fill();
+  glow(c, mx, 218, 90, '255,196,110', .75 + Math.sin(t * 3) * .05);
+  c.fillStyle = '#f2b765'; archPath(c, mx - 7, 14, 232, 240); c.fill();
+  seated(c, mx, 239, 12, '#1a0e08');
+  for (let i = 0; i < 12; i++) {
+    const x0 = 250 + i * 66;
+    archPath(c, x0, 44, 580, 612); c.fillStyle = 'rgba(242,170,90,.55)'; c.fill();
+  }
+  c.fillStyle = '#080a14'; c.fillRect(0, 612, W, H);
+}
+function jerusalem(c, t) {
+  sky(c, [[0, '#1b2952'], [.55, '#6e6a8a'], [.8, '#d99c62'], [1, '#d99c62']]);
+  stars(c, t, .3);
+  ridge(c, 520, 30, .003, 1, '#3b3450');
+  c.fillStyle = '#2a2436'; c.fillRect(0, 560, W, H);
+  c.fillStyle = '#342c3f'; c.fillRect(330, 548, 620, 16);
+  [[380, 560], [910, 560]].forEach(([x, y]) => { c.fillStyle = '#141620'; c.beginPath(); c.ellipse(x, y - 70, 16, 72, 0, 0, TAU); c.fill(); });
+  c.fillStyle = '#2f5d8c'; c.fillRect(468, 430, 344, 120);
+  c.fillStyle = 'rgba(160,200,235,.25)'; for (let x = 480; x < 810; x += 28) c.fillRect(x, 440, 3, 104);
+  c.fillStyle = '#23466d'; c.fillRect(468, 426, 344, 10);
+  c.fillStyle = '#2a4f7a'; c.fillRect(556, 384, 168, 46);
+  for (let x = 566; x < 720; x += 20) { c.fillStyle = 'rgba(255,220,160,.35)'; c.fillRect(x, 394, 8, 20); }
+  const dg = c.createLinearGradient(552, 280, 728, 384);
+  dg.addColorStop(0, '#fbe19a'); dg.addColorStop(.5, '#e7b44f'); dg.addColorStop(1, '#9a6a24');
+  c.fillStyle = dg; c.beginPath(); c.moveTo(552, 386);
+  c.bezierCurveTo(552, 300, 600, 278, 640, 276); c.bezierCurveTo(680, 278, 728, 300, 728, 386); c.closePath(); c.fill();
+  glow(c, 640, 320, 160, '255,215,130', .25 + Math.sin(t * 1.5) * .05);
+  c.strokeStyle = '#d9a441'; c.lineWidth = 2; c.beginPath(); c.moveTo(640, 276); c.lineTo(640, 250); c.stroke();
+  crescent(c, 640, 244, 7, '#f0cf7a');
+  c.fillStyle = '#10131c'; c.fillRect(620, 496, 40, 54);
+  c.fillStyle = 'rgba(255,214,140,.85)'; c.fillRect(639, 498, 2, 52); c.fillRect(620, 548, 40, 2);
+}
+function mecca(c, t) {
+  sky(c, [[0, '#060918'], [1, '#161b33']]);
+  stars(c, t);
+  ridge(c, 450, 55, .005, 4, '#0c0e1c');
+  c.fillStyle = '#1c1c28'; c.fillRect(0, 520, W, H);
+  c.fillStyle = '#2b2b38'; c.beginPath(); c.ellipse(640, 590, 460, 98, 0, 0, TAU); c.fill();
+  glow(c, 640, 560, 420, '230,230,255', .08);
+  const dot = back => {
+    c.fillStyle = 'rgba(245,242,235,.85)';
+    for (const p of TAWAF) {
+      const a = p.a - t * .22, s = Math.sin(a);
+      if ((s < 0) !== back) continue;
+      c.beginPath(); c.arc(640 + Math.cos(a) * 400 * p.rr, 590 + s * 86 * p.rr, 1.7 + (s + 1) * .5, 0, TAU); c.fill();
+    }
+  };
+  dot(true);
+  c.fillStyle = '#1a1a1f'; c.beginPath(); c.moveTo(575, 420); c.lineTo(630, 404); c.lineTo(760, 404); c.lineTo(705, 420); c.closePath(); c.fill();
+  c.fillStyle = '#050507'; c.beginPath(); c.moveTo(705, 420); c.lineTo(760, 404); c.lineTo(760, 552); c.lineTo(705, 570); c.closePath(); c.fill();
+  c.fillStyle = '#0c0c10'; c.fillRect(575, 420, 130, 150);
+  c.fillStyle = '#c9a24a'; c.fillRect(575, 448, 130, 9);
+  c.beginPath(); c.moveTo(705, 448); c.lineTo(760, 432); c.lineTo(760, 441); c.lineTo(705, 457); c.closePath(); c.fill();
+  c.fillStyle = '#b8923d'; c.fillRect(668, 482, 24, 58);
+  dot(false);
+}
+function exterior(c, t) {
+  sky(c, [[0, '#070b1e'], [.7, '#18203e'], [1, '#2a2c4c']]);
+  stars(c, t);
+  city(c, CITY_TUS, 540, '#0e1024', .7, .25);
+  c.fillStyle = '#08090f'; c.fillRect(0, 538, W, H);
+  const b = '#141627';
+  c.fillStyle = b; c.fillRect(440, 390, 400, 200);
+  c.beginPath(); c.moveTo(560, 392); c.bezierCurveTo(560, 320, 610, 300, 640, 290); c.bezierCurveTo(670, 300, 720, 320, 720, 392); c.fill();
+  c.fillRect(470, 300, 22, 92); c.beginPath(); c.moveTo(470, 300); c.lineTo(481, 276); c.lineTo(492, 300); c.fill();
+  for (const x of [470, 540, 720, 790]) { archPath(c, x, 26, 470, 500); c.fillStyle = 'rgba(245,176,96,.8)'; c.fill(); }
+  glow(c, 640, 540, 160, '255,180,90', .5);
+  archPath(c, 610, 60, 540, 590); c.fillStyle = '#f0a24f'; c.fill();
+  for (let i = 0; i < 3; i++) {
+    const x = 1060 - ((t * 44 + i * 120) % 440);
+    if (x > 650) figure(c, x, 592, 60, '#020206', { walk: 1, t: t + i, flip: true });
+  }
+}
+function interior(c, t) {
+  const kk = ease((t - 6) / 12);
+  c.fillStyle = '#1c1411'; c.fillRect(0, 0, W, H);
+  c.save(); archPath(c, 460, 360, 340, 560); c.clip();
+  sky(c, [[0, mix('#0b1330', '#7084b4', kk)], [.55, mix('#1d1d3c', '#e8c08e', kk)], [.78, mix('#2a2140', '#f6d596', kk)], [1, mix('#2a2140', '#f6d596', kk)]]);
+  stars(c, t, 1 - kk * 1.6);
+  c.fillStyle = `rgba(255,255,240,${1 - kk})`; c.beginPath(); c.arc(700, 180, 3, 0, TAU); c.fill();
+  glow(c, 700, 180, 30, '255,255,240', .5 * (1 - kk));
+  glow(c, 640, 560, 380, '255,214,150', .5 * kk);
+  ridge(c, 520, 12, .01, 1, mix('#0e0f1e', '#6d5566', kk));
+  const bt = t - 15.8;
+  if (bt > 0) {
+    c.strokeStyle = '#231a1d'; c.lineWidth = 2.5;
+    for (let i = 0; i < 5; i++) {
+      const x = 640 + bt * (40 + i * 18) - i * 22, y = 470 - bt * (60 + i * 10) + i * 14, w = Math.sin(t * 9 + i) * 5;
+      c.beginPath(); c.moveTo(x - 9, y - w); c.quadraticCurveTo(x - 4, y - 3, x, y); c.quadraticCurveTo(x + 4, y - 3, x + 9, y - w); c.stroke();
+    }
+  }
+  c.restore();
+  c.strokeStyle = 'rgba(217,164,65,.35)'; c.lineWidth = 3; archPath(c, 452, 376, 342, 564); c.stroke();
+  c.fillStyle = '#2a1d17'; c.fillRect(440, 556, 400, 14);
+  c.fillStyle = '#140e0b'; c.fillRect(0, 590, W, H);
+  // oil lamp on the sill
+  const lf = 1 - fin(t, 14.8, 1.6);
+  c.fillStyle = '#3a2618'; c.beginPath(); c.ellipse(520, 552, 20, 7, 0, 0, TAU); c.fill();
+  if (lf > 0) {
+    glow(c, 520, 536, 180 * lf, '255,170,80', .45 * lf);
+    c.fillStyle = `rgba(255,214,140,${lf})`; c.beginPath(); c.moveTo(530, 548); c.quadraticCurveTo(540, 536, 532, 522 + (1 - lf) * 10); c.quadraticCurveTo(524, 538, 530, 548); c.fill();
+  } else {
+    c.strokeStyle = 'rgba(200,200,200,.25)'; c.lineWidth = 1.5; c.beginPath();
+    for (let y = 0; y < 60; y += 4) c.lineTo(532 + Math.sin(y * .2 + t * 2) * 6, 540 - y - (t - 16.4) * 6);
+    c.stroke();
+  }
+  // prayer rug in perspective, pointing to the qibla window
+  c.fillStyle = '#5b1f22';
+  c.beginPath(); c.moveTo(560, 600); c.lineTo(720, 600); c.lineTo(800, 712); c.lineTo(480, 712); c.closePath(); c.fill();
+  c.strokeStyle = 'rgba(217,164,65,.5)'; c.lineWidth = 2;
+  c.beginPath(); c.moveTo(572, 608); c.lineTo(708, 608); c.lineTo(778, 704); c.lineTo(502, 704); c.closePath(); c.stroke();
+  c.beginPath(); c.moveTo(605, 632); c.quadraticCurveTo(640, 606, 675, 632); c.stroke();
+  const sa = fin(t, 8, 1.6);
+  withA(c, sa, () => {
+    glow(c, 640, 660, 120, '255,250,235', .25 + .2 * fin(t, 10.8, 1.5));
+    c.fillStyle = '#f3eee4'; c.beginPath(); c.moveTo(596, 648); c.lineTo(684, 648); c.lineTo(692, 674); c.lineTo(588, 674); c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(160,150,130,.5)'; c.lineWidth = 1.5; c.beginPath(); c.moveTo(594, 660); c.lineTo(686, 660); c.stroke();
+  });
+  text(c, 'سمعًا وطاعةً للدخول على الملك', 640, 80, '700 46px "Aref Ruqaa", "Amiri", serif', `rgba(233,199,123,${fin(t, 11, 1.6)})`);
+}
+
+/* ---------- timeline ---------- */
+let acc = 0;
+SCENES.forEach(s => { s.start = acc; acc += s.dur; });
+const TOTAL = acc;
+function locate(T) {
+  T = clamp(T, 0, TOTAL - .001);
+  for (let i = SCENES.length - 1; i >= 0; i--) if (T >= SCENES[i].start) return { i, s: SCENES[i], t: T - SCENES[i].start };
+  return { i: 0, s: SCENES[0], t: 0 };
+}
+const AR_DIGITS = n => String(n).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+const fmt = s => { s = Math.max(0, Math.floor(s)); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; };
+
+/* ---------- rendering ---------- */
+let T = 0, playing = false, poster = true, last = 0;
+function render() {
+  const { i, s, t } = poster ? { i: 0, s: SCENES[0], t: 6 } : locate(T);
+  ctx.setTransform(K, 0, 0, K, 0, 0); ctx.globalAlpha = 1;
+  s.draw(ctx, t, s.dur);
+  const vg = ctx.createRadialGradient(W / 2, H / 2, H * .38, W / 2, H / 2, H * .98);
+  vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(0,0,0,.55)');
+  ctx.fillStyle = vg; ctx.fillRect(0, 0, W, H);
+  if (!poster && i > 0) {
+    text(ctx, `الفصل ${AR_DIGITS(i + 1)} · ${s.ar}`, W - 36, H - 30, '400 22px "Amiri", serif', 'rgba(239,227,200,.55)', 'rtl', 'right');
+  }
+  if (!poster) {
+    const f = Math.min(1, t / .9, (s.dur - t) / .9);
+    if (f < 1) { ctx.fillStyle = `rgba(0,0,0,${1 - clamp(f)})`; ctx.fillRect(0, 0, W, H); }
+  }
+  return { i, s, t };
+}
+
+/* ---------- UI ---------- */
+const $ = id => document.getElementById(id);
+const subs = $('subs'), subAr = $('subAr'), subEn = $('subEn'), seek = $('seek'), timeEl = $('time');
+const playBtn = $('playBtn'), bigPlay = $('bigPlay'), langBtn = $('langBtn'), soundBtn = $('soundBtn');
+const ICON_PLAY = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg>';
+const ICON_PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>';
+const ICON_SOUND_ON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z" fill="currentColor"/><path d="M16 8.5a5 5 0 010 7M19 6a8.5 8.5 0 010 12"/></svg>';
+const ICON_SOUND_OFF = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z" fill="currentColor"/><path d="M17 9l5 6M22 9l-5 6"/></svg>';
+seek.max = TOTAL;
+
+const ticks = $('ticks');
+SCENES.forEach((s, i) => { if (!i) return; const e = document.createElement('i'); e.style.insetInlineStart = (s.start / TOTAL * 100) + '%'; ticks.appendChild(e); });
+
+const list = $('chapters');
+const chapBtns = SCENES.map((s, i) => {
+  const li = document.createElement('li');
+  const b = document.createElement('button');
+  b.className = 'chap'; b.type = 'button';
+  b.innerHTML = `<span class="n">${AR_DIGITS(i + 1)}</span><span class="t"></span><span class="e" lang="en"><span></span><b>${fmt(s.start)}</b></span>`;
+  b.querySelector('.t').textContent = s.ar;
+  b.querySelector('.e span').textContent = s.en;
+  b.addEventListener('click', () => { T = s.start + .01; poster = false; bigPlay.hidden = true; if (!playing) play(); });
+  li.appendChild(b); list.appendChild(li);
+  return b;
+});
+
+let lastSub = null, lastChap = -1;
+function updateUI(info) {
+  seek.value = T;
+  timeEl.textContent = `${fmt(T)} / ${fmt(TOTAL)}`;
+  if (poster) return;
+  const { i, s, t } = info;
+  let cur = null;
+  for (const sub of s.subs) if (t >= sub[0]) cur = sub;
+  if (cur && t > s.dur - .5) cur = null;
+  if (cur !== lastSub) {
+    lastSub = cur;
+    subAr.textContent = cur ? cur[1] : '';
+    subEn.textContent = cur ? cur[2] : '';
+  }
+  if (i !== lastChap) {
+    lastChap = i;
+    chapBtns.forEach((b, j) => b.setAttribute('aria-current', j === i ? 'true' : 'false'));
+  }
+}
+function setPlayIcon() {
+  playBtn.innerHTML = playing ? ICON_PAUSE : ICON_PLAY;
+  playBtn.setAttribute('aria-label', playing ? 'إيقاف مؤقت' : 'تشغيل');
+}
+function play() {
+  if (T >= TOTAL - .05) T = 0;
+  poster = false; playing = true; bigPlay.hidden = true; last = performance.now();
+  setPlayIcon(); audioLevel();
+}
+function pause() { playing = false; setPlayIcon(); audioLevel(); }
+function toggle() { playing ? pause() : play(); }
+
+playBtn.addEventListener('click', toggle);
+bigPlay.addEventListener('click', play);
+cv.addEventListener('click', toggle);
+seek.addEventListener('input', () => { T = +seek.value; poster = false; bigPlay.hidden = true; });
+document.addEventListener('keydown', e => {
+  if (e.target.closest && e.target.closest('button, input')) return;
+  if (e.key === ' ') { e.preventDefault(); toggle(); }
+  else if (e.key === 'ArrowLeft') { T = clamp(T + 5, 0, TOTAL); poster = false; }
+  else if (e.key === 'ArrowRight') { T = clamp(T - 5, 0, TOTAL); poster = false; }
+});
+
+const LANGS = [['both', 'عربي + EN'], ['ar', 'عربي'], ['en', 'EN']];
+let lang = 0;
+try { const v = localStorage.getItem('ghazali-lang'); if (v !== null) lang = +v % 3; } catch (e) {}
+function applyLang() {
+  const m = LANGS[lang][0];
+  subs.classList.toggle('hide-ar', m === 'en');
+  subs.classList.toggle('hide-en', m === 'ar');
+  langBtn.textContent = LANGS[lang][1];
+}
+langBtn.addEventListener('click', () => { lang = (lang + 1) % 3; applyLang(); try { localStorage.setItem('ghazali-lang', lang); } catch (e) {} });
+applyLang();
+
+$('fsBtn').addEventListener('click', () => {
+  const el = $('screen');
+  try {
+    if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+    else if (el.requestFullscreen) el.requestFullscreen().catch(() => {});
+  } catch (e) {}
+});
+
+/* ---------- sound: a drone and plucked notes in maqam Hijaz on D ---------- */
+let actx = null, master = null, fx = null, soundOn = false, nextPluck = 0, noteIdx = 3;
+const HIJAZ = [220, 233.08, 277.18, 293.66, 311.13, 369.99, 392, 440, 466.16, 523.25, 587.33];
+function initAudio() {
+  const AC = window.AudioContext || window.webkitAudioContext;
+  if (!AC) return false;
+  actx = new AC();
+  master = actx.createGain(); master.gain.value = 0; master.connect(actx.destination);
+  fx = actx.createDelay(); fx.delayTime.value = .42;
+  const fb = actx.createGain(); fb.gain.value = .33;
+  const lp = actx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 1400;
+  fx.connect(lp); lp.connect(fb); fb.connect(fx); lp.connect(master);
+  [[73.42, .11, 'sine'], [110, .06, 'sine'], [146.83, .025, 'triangle']].forEach(([f, g0, type], i) => {
+    const o = actx.createOscillator(); o.type = type; o.frequency.value = f;
+    const g = actx.createGain(); g.gain.value = g0;
+    const lfo = actx.createOscillator(); lfo.frequency.value = .06 + i * .035;
+    const lg = actx.createGain(); lg.gain.value = g0 * .45;
+    lfo.connect(lg); lg.connect(g.gain); o.connect(g); g.connect(master); o.start(); lfo.start();
+  });
+  return true;
+}
+function pluck(f, when, v = .13) {
+  const o = actx.createOscillator(); o.type = 'triangle'; o.frequency.value = f;
+  const o2 = actx.createOscillator(); o2.type = 'sine'; o2.frequency.value = f * 2.01;
+  const g = actx.createGain();
+  g.gain.setValueAtTime(0, when); g.gain.linearRampToValueAtTime(v, when + .008); g.gain.exponentialRampToValueAtTime(.0001, when + 1.8);
+  const g2 = actx.createGain(); g2.gain.value = .25;
+  const lp = actx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.setValueAtTime(3200, when); lp.frequency.exponentialRampToValueAtTime(500, when + 1.2);
+  o.connect(lp); o2.connect(g2); g2.connect(lp); lp.connect(g); g.connect(master); g.connect(fx);
+  o.start(when); o2.start(when); o.stop(when + 1.9); o2.stop(when + 1.9);
+}
+function audioLevel() {
+  if (!actx) return;
+  const target = soundOn && playing ? .55 : 0;
+  master.gain.cancelScheduledValues(actx.currentTime);
+  master.gain.setTargetAtTime(target, actx.currentTime, .4);
+}
+function tickAudio(sceneIdx) {
+  if (!actx || !soundOn || !playing) return;
+  const now = actx.currentTime;
+  if (nextPluck < now) nextPluck = now + .05;
+  while (nextPluck < now + .25) {
+    noteIdx = clamp(noteIdx + Math.round((Math.random() - .5) * 3.2), 0, HIJAZ.length - 1);
+    pluck(HIJAZ[noteIdx], nextPluck, sceneIdx === 6 ? .08 : .13);
+    if (Math.random() < .25) pluck(HIJAZ[noteIdx] / 2, nextPluck, .06);
+    const slow = sceneIdx === 6 || sceneIdx === 9 ? 1.6 : 1;
+    nextPluck += (Math.random() < .3 ? .25 : .55 + Math.random() * 1.1) * slow;
+  }
+}
+function setSoundIcon() { soundBtn.innerHTML = soundOn ? ICON_SOUND_ON : ICON_SOUND_OFF; soundBtn.setAttribute('aria-pressed', soundOn); }
+soundBtn.addEventListener('click', () => {
+  if (!actx && !initAudio()) return;
+  if (actx.state === 'suspended') actx.resume().catch(() => {});
+  soundOn = !soundOn; setSoundIcon(); audioLevel();
+});
+setSoundIcon(); setPlayIcon();
+
+/* ---------- sizing & loop ---------- */
+function resize() {
+  const r = cv.getBoundingClientRect();
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const w = Math.max(320, Math.min(1920, Math.round(r.width * dpr)));
+  cv.width = buf.width = w; cv.height = buf.height = Math.round(w * 9 / 16);
+  K = w / W;
+}
+new ResizeObserver(() => { resize(); if (!playing) updateUI(render()); }).observe(cv);
+resize();
+
+function frame(now) {
+  if (playing) {
+    T += Math.min(.1, (now - last) / 1000);
+    if (T >= TOTAL) { T = TOTAL; pause(); bigPlay.hidden = false; }
+  }
+  last = now;
+  const info = render();
+  updateUI(info);
+  tickAudio(info.i);
+  requestAnimationFrame(frame);
+}
+const fonts = ['700 60px "Aref Ruqaa"', '400 30px "Amiri"', 'italic 500 22px "Cormorant Garamond"'];
+Promise.all(fonts.map(f => document.fonts.load(f, f.includes('Cormorant') ? 'THE END' : 'أبو حامد'))).catch(() => {}).finally(() => {
+  updateUI(render());
+  requestAnimationFrame(t => { last = t; frame(t); });
+});
+})();
+</script>
